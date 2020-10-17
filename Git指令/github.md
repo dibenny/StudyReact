@@ -1,23 +1,15 @@
-### 创建生成 SSH 密钥
+ ### 添加密钥
+ 1. 切换至ssh文件夹并查看是否有密钥
 
-1. 查看是否已经存在密钥
+ - 切换至ssh文件夹：`cd ~/.ssh`
 
-`cd ~/.ssh`
+ 2. 指定生成目录文件名字
 
-- 如果没有密钥，则创建密钥
+ - 指定生成目录文件名字：`ssh-keygen -t rsa -C "xxxx@qq.com" -f ~/.ssh/idlock_rsa`
 
-```
-ssh-keygen -t rsa -C 'xxxx@qq.com' # 生成密钥
-ssh-keygen -t rsa -C "xxxx@qq.com" -f ~/.ssh/ww_rsa # 指定生成目录文件名字
-ssh -T git@github.com   # 测试是否成功
-```
+执行这条命令会如上图提示文件保存路径，可以直接按 Enter，然后提示输入 passphrase（密码），输入两次（可以不输直接两次 Enter），
+ 此时会生成`idlock_rsa`和`idlock_rsa.pub`两个文件，其中`idlock_rsa`是公钥，`idlock_rsa.pub`是密钥
 
-执行这条命令会如上图提示文件保存路径，可以直接按 Enter，
+3. 查看密钥
 
-然后提示输入 passphrase（密码），输入两次（可以不输直接两次 Enter），
-
-然后会在 .ssh 目录生产两个文件：id_rsa 和 id_rsa.pub
-
-用记事本打开.ssh 目录下的 id_rsa.pub 文件，复制里面的内容，或者直接执行命令查看 2.
-
-这个密钥用来跟 github 通信，在本地终端里生成然后上传到 github
+- 查看密钥指令：`cat idlock_rsa.pub`,可查看并复制密钥至SSH
